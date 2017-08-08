@@ -1,0 +1,16 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <% if corsaire_signed_in? %>
+          <li><%= link_to "Sign Out", destroy_corsaire_session_path, method: :delete %></li>
+          <li><%= link_to "Edit Account", edit_corsaire_registration_path %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_corsaire_registration_path %></li>
+          <li><%= link_to "Sign In", new_corsaire_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
