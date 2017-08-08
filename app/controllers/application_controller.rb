@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     # Before filters
     # Confirms a logged-in Corsaire.
     def logged_in_corsaire
-      unless logged_in?
+      unless corsaire_signed_in?
         #store_location
         flash[:danger] = "Please log in."
         redirect_to new_corsaire_session_path
