@@ -1,11 +1,15 @@
 <h1>Gossips</h1>
-<ul>
-  <% @gossips.each do |gossip| %>
+<% if corsaire_signed_in? %>
+  <ul>
+    <% @gossips.each do |gossip| %>
 
-  <li id="micropost-<%= gossip.id %>"> 
-    <span class="content"><%= gossip.content %></span>
-    <span class="user">, by <%= gossip.corsaire.anonymous_username %></span>
-  </li>
+    <li id="micropost-<%= gossip.id %>"> 
+      <span class="content"><%= gossip.content %></span>
+      <span class="user">, by <%= gossip.corsaire.anonymous_username %></span>
+    </li>
 
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Please <%= link_to "Sign in", new_corsaire_session_path %> or <%= link_to 'Sign up', new_corsaire_registration_path %> if not yet done to see the gossips!</p>
+<% end %>
