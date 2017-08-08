@@ -1,7 +1,7 @@
 class GossipsController < ApplicationController
 
   before_action :logged_in_corsaire, only: [:new, :create, :edit, :update, :destroy]
-
+  before_action :current_corsaire, only: [:destroy]
   def new
     @gossip = Gossip.new
   end
@@ -27,6 +27,8 @@ class GossipsController < ApplicationController
   end
 
   def destroy
+    Gossip.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   def index

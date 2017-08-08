@@ -6,6 +6,12 @@
     <li id="micropost-<%= gossip.id %>"> 
       <span class="content"><%= gossip.content %></span>
       <span class="user">, by <%= gossip.corsaire.anonymous_username %></span>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(gossip.created_at) %> ago.
+        <% if current_corsaire?(gossip.corsaire) %>
+          <%= link_to "delete", gossip, method: :delete %>
+        <%end%>
+      </span>
     </li>
 
     <% end %>
